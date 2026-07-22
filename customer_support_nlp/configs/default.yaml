@@ -1,0 +1,42 @@
+data:
+  input_path: null
+  text_column: text
+  date_column: created_at
+  ticket_id_column: ticket_id
+
+topic_modeling:
+  n_topics: auto
+  embedding_model: all-MiniLM-L6-v2
+  umap_n_neighbors: 15
+  umap_n_components: 5
+  hdbscan_min_cluster_size: 10
+  min_topic_size: 10
+
+sentiment:
+  vader_weight: 0.4
+  distilbert_weight: 0.6
+  critical_threshold: -0.7
+  batch_size: 32
+
+ner:
+  spacy_model: en_core_web_sm
+  entity_types:
+    - PERSON
+    - ORG
+    - PRODUCT
+    - DATE
+    - MONEY
+    - GPE
+  critical_money_threshold: 100.0
+
+report:
+  output_dir: outputs
+  report_format: html
+  include_wordclouds: true
+  include_heatmaps: true
+  ibm_style: true
+
+pipeline:
+  output_dir: outputs
+  log_level: INFO
+  continue_on_error: true
